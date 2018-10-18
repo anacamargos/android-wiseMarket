@@ -62,18 +62,19 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_lists) {
             // Mostrar lista de compras
-            //Intent intent = new Intent(this, LoginActivity.class);
-            //startActivity(intent);
+            // TODO fazer tela lista de compras
         } else if (id == R.id.nav_products) {
             // Mostrar lista de produtos
-            //Intent intent2 = new Intent(this, SignupActivity.class);
-            //startActivity(intent2);
+            // TODO fazer tela produtos
         } else if (id == R.id.nav_historic) {
             // Mostrar historico de compras
+            // TODO fazer tela historico de compras
         } else if (id == R.id.nav_settings) {
             // Mostrar configurações
+            // TODO fazer tela configuracoes
         } else if (id == R.id.nav_logout) {
             // Fazer log out
+            // TODO fazer logout
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

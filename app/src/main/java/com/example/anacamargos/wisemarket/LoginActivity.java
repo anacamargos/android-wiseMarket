@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        //if validations are ok
-        // fazer login
+        // if validations are ok
+        // TODO fazer login
     }
 }
