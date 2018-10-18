@@ -12,13 +12,13 @@ public class Usuario {
     private String email;
     private String numCredito;
     private String datExpira;
-    private String cvv;
+    private String codigoSeguranca;
     private String senha;
 
     public Usuario () {}
 
     public Usuario (String nome, String cpf, String cep, String telefone, String email, String numCredito, String datExpira,
-                    String cvv, String senha) {
+                    String codigoSeguranca, String senha) {
         this.nome = nome;
         this.cpf = cpf;
         this. cep = cep;
@@ -26,7 +26,7 @@ public class Usuario {
         this.email = email;
         this.numCredito = numCredito;
         this.datExpira = datExpira;
-        this.cvv = cvv;
+        this.codigoSeguranca = codigoSeguranca;
         this.senha = senha;
     }
 
@@ -40,7 +40,7 @@ public class Usuario {
         return cpf;
     }
     public String getCvv() {
-        return cvv;
+        return codigoSeguranca;
     }
     public String getDatExpira() {
         return datExpira;
@@ -70,8 +70,8 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public void setCvv(String cvv) {
-        this.cvv = cvv;
+    public void setCvv(String codigoSeguranca) {
+        this.codigoSeguranca = codigoSeguranca;
     }
 
     public void setDatExpira(String datExpira) {

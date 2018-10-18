@@ -62,12 +62,12 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_lists) {
             // Mostrar lista de compras
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+            //Intent intent = new Intent(this, LoginActivity.class);
+            //startActivity(intent);
         } else if (id == R.id.nav_products) {
             // Mostrar lista de produtos
-            Intent intent2 = new Intent(this, SignupActivity.class);
-            startActivity(intent2);
+            //Intent intent2 = new Intent(this, SignupActivity.class);
+            //startActivity(intent2);
         } else if (id == R.id.nav_historic) {
             // Mostrar historico de compras
         } else if (id == R.id.nav_settings) {

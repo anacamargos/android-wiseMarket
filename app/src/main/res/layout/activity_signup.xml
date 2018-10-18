@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Numero Cartão de Crédito" />
+            android:hint="Número Cartão de Crédito" />
 
         <EditText
             android:id="@+id/signup_datexpira"
@@ -111,10 +111,10 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Data Expiração" />
+            android:hint="Data de Validade" />
 
         <EditText
-            android:id="@+id/signup_cvv"
+            android:id="@+id/signup_codigoseguranca"
             android:layout_marginTop="8dp"
             android:background="@drawable/edit_text_style"
             android:layout_width="249dp"
@@ -122,7 +122,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="CVV" />
+            android:hint="Código de Segurança" />
 
         <Button
             android:layout_marginTop="8dp"
