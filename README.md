@@ -6,7 +6,7 @@ Aplicativo desenvolvido para a disciplina LPS
 
 O projeto em questão se trata de um sistema de compras de supermercado. O objetivo dele é facilitar a vida do cliente possibilitando que ele realize toda a sua compra de supermercado sem ter que sair de casa usando apenas o seu celular.
 
----
+
 
 ### Documentos
 
@@ -16,7 +16,7 @@ O projeto em questão se trata de um sistema de compras de supermercado. O objet
 
 
 
----
+
 
 ### Autores
 
@@ -25,6 +25,4 @@ O projeto em questão se trata de um sistema de compras de supermercado. O objet
 * Otto Bittencourt
 * Rafael Câmara
 
----
 
-### Teste
