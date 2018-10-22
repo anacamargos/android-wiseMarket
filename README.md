@@ -12,6 +12,8 @@ O projeto em questão se trata de um sistema de compras de supermercado. O objet
 * [Definição da Arquitetura](https://drive.google.com/file/d/1t7LG7Ov1xkTQHOWeJS78ZijRVh1OU487/view?usp=sharing)
 * [Vídeo da Prototipagem da Aplicação](https://youtu.be/EMj7uifzObg)
 
+
+
 ---
 
 ### Autores
