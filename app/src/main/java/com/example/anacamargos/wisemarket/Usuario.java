@@ -30,6 +30,19 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public void alterarDados (String nome, String cpf, String cep, String telefone, String email, String numCredito, String datExpira,
+                    String codigoSeguranca, String senha) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this. cep = cep;
+        this.telefone = telefone;
+        this.email = email;
+        this.numCredito = numCredito;
+        this.datExpira = datExpira;
+        this.codigoSeguranca = codigoSeguranca;
+        this.senha = senha;
+    }
+
     public int getId() {
         return id;
     }
