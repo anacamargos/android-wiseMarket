@@ -19,7 +19,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, SettingsFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, SettingsFragment.OnFragmentInteractionListener,
+        ProductsFragment.OnFragmentInteractionListener {
 
     FragmentManager fm;
 
@@ -29,6 +30,9 @@ public class MainActivity extends AppCompatActivity
     public void onFragmentInteraction(Uri uri){
 
     }
+
+
+
 
 
     @Override
@@ -80,16 +84,16 @@ public class MainActivity extends AppCompatActivity
             // TODO fazer tela lista de compras
         } else if (id == R.id.nav_products) {
             // Mostrar lista de produtos
-            // TODO fazer tela produtos
+
+
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.frame_layout, new ProductsFragment());
+            ft.commit();
         } else if (id == R.id.nav_historic) {
             // Mostrar historico de compras
             // TODO fazer tela historico de compras
         } else if (id == R.id.nav_settings) {
-            // Mostrar configurações
-
-            /*FragmentTransaction ft = fm.beginTransaction();
-            ft.add(R.id.frame_layout, new SettingsFragment());
-            ft.commit();*/
+            // Mostrar tela configurações
 
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.frame_layout, new SettingsFragment());
