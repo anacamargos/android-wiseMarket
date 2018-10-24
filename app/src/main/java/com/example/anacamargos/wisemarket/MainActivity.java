@@ -1,9 +1,13 @@
 package com.example.anacamargos.wisemarket;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,7 +19,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, SettingsFragment.OnFragmentInteractionListener {
+
+    FragmentManager fm;
+
+
+
+    @Override
+    public void onFragmentInteraction(Uri uri){
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +73,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        fm = getSupportFragmentManager();
 
         if (id == R.id.nav_lists) {
             // Mostrar lista de compras
@@ -71,7 +86,15 @@ public class MainActivity extends AppCompatActivity
             // TODO fazer tela historico de compras
         } else if (id == R.id.nav_settings) {
             // Mostrar configurações
-            // TODO fazer tela configuracoes
+
+            /*FragmentTransaction ft = fm.beginTransaction();
+            ft.add(R.id.frame_layout, new SettingsFragment());
+            ft.commit();*/
+
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.frame_layout, new SettingsFragment());
+            ft.commit();
+
         } else if (id == R.id.nav_logout) {
             // Fazer log out
             // TODO fazer logout
@@ -81,6 +104,7 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 
     /*@Override
