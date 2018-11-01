@@ -170,11 +170,11 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
         Usuario usuario = new Usuario(nome, cpf, cep, telefone, email, numCredito, datExpira, codigoSeguranca, senha);
 
-//        final FirebaseUser currentUser = mAuth.getCurrentUser();
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("users/" + currentUser.getUid());
-//
-//        myRef.setValue(usuario);
+        final FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users/" + currentUser.getUid());
+
+        myRef.setValue(usuario);
 
 //        AuthCredential credential = EmailAuthProvider
 //                .getCredential(currentUser.getEmail(), currentUser.get);
