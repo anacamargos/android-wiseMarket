@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "171667701165",
+    "firebase_url": "https://android-wisemarket.firebaseio.com",
+    "project_id": "android-wisemarket",
+    "storage_bucket": "android-wisemarket.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171667701165:android:32b1c34875591da3",
+        "android_client_info": {
+          "package_name": "com.example.anacamargos.wisemarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "171667701165-ulk2ustmu2n2cgf0uuf6idstrdr4sbg6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.anacamargos.wisemarket",
+            "certificate_hash": "05e1ced5647e9455862bb74da5200f68468cfec3"
+          }
+        },
+        {
+          "client_id": "171667701165-0o74ak53liti5847bu2usmkqu3f9cjtf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBP5FOsqMoFyxOLUCG-VemOsZtMUXpJuyQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "171667701165-0o74ak53liti5847bu2usmkqu3f9cjtf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,10 +5,22 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,6 +34,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private EditText signupDatExpira;
     private EditText signupCodigoSeguranca;
     private Button signupButton;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +54,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         signupButton = (Button) findViewById(R.id.signup_button);
 
         signupButton.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -65,10 +81,37 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         //if validations are ok
-        Usuario usuario = new Usuario(nome, cpf, cep, telefone, email, numCredito, datExpira, codigoSeguranca, senha);
+        final Usuario usuario = new Usuario(nome, cpf, cep, telefone, email, numCredito, datExpira, codigoSeguranca, senha);
 
+        mAuth.createUserWithEmailAndPassword(email, senha)
+                .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("FIREBASE", "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference myRef = database.getReference("users/");
+
+                            Map<String, Object> addedUser = new HashMap<>();
+                            addedUser.put(user.getUid(), usuario);
+                            myRef.updateChildren(addedUser);
+
+                            startActivity(new Intent(SignupActivity.this, MainActivity.class));
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("FIREBASE", "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(SignupActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        // ...
+                    }
+                });
         // TODO registrar usuario
-
 
     }
 }

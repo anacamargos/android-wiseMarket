@@ -14,6 +14,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,6 +64,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     private OnFragmentInteractionListener mListener;
 
+    private FirebaseAuth mAuth;
+
+
     public SettingsFragment() {
         // Required empty public constructor
     }
@@ -82,6 +97,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -99,20 +115,35 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         settingsCodigoSeguranca = (EditText) getView().findViewById(R.id.settings_codigoseguranca);
         settingsButton = (Button) getView().findViewById(R.id.settings_button);
 
-        // TODO pegar instacia do usuario
-        // TODO setar valores com dados do usuario
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users/" + currentUser.getUid());
 
-        settingsNome.setText("OIOI");
-        settingsEmail.setText("");
-        settingsTelefone.setText("");
-        settingsCpf.setText("");
-        settingsCep.setText("");
-        settingsSenha.setText("");
-        settingsNumCredito.setText("");
-        settingsDatExpira.setText("");
-        settingsCodigoSeguranca.setText("");
 
-        settingsButton.setOnClickListener(this);
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Usuario myUser = dataSnapshot.getValue(Usuario.class);
+                settingsNome.setText(myUser.getNome());
+                settingsEmail.setText(myUser.getEmail());
+                settingsTelefone.setText(myUser.getTelefone());
+                settingsCpf.setText(myUser.getCpf());
+                settingsCep.setText(myUser.getCep());
+                settingsSenha.setText(myUser.getSenha());
+                settingsNumCredito.setText(myUser.getNumCredito());
+                settingsDatExpira.setText(myUser.getDatExpira());
+                settingsCodigoSeguranca.setText(myUser.getCvv());
+
+                settingsButton.setOnClickListener(SettingsFragment.this);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     @Override
@@ -137,8 +168,43 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
             return;
         }
 
+        Usuario usuario = new Usuario(nome, cpf, cep, telefone, email, numCredito, datExpira, codigoSeguranca, senha);
+
+//        final FirebaseUser currentUser = mAuth.getCurrentUser();
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("users/" + currentUser.getUid());
+//
+//        myRef.setValue(usuario);
+
+//        AuthCredential credential = EmailAuthProvider
+//                .getCredential(currentUser.getEmail(), currentUser.get);
+//
+//// Prompt the user to re-provide their sign-in credentials
+//        currentUser.reauthenticate(credential)
+//                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if (task.isSuccessful()) {
+//                            currentUser.updatePassword(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<Void> task) {
+//                                    if (task.isSuccessful()) {
+//                                        Log.d(TAG, "Password updated");
+//                                    } else {
+//                                        Log.d(TAG, "Error password not updated")
+//                                    }
+//                                }
+//                            });
+//                        } else {
+//                            Log.d(TAG, "Error auth failed")
+//                        }
+//                    }
+//                });
+
+//        currentUser.updatePassword(senha);
+//        currentUser.updateEmail(email);
         //if validations are ok
-        //Usuario usuario = new Usuario(nome, cpf, cep, telefone, email, numCredito, datExpira, codigoSeguranca, senha);
         // TODO alterar dados do Usuario
 
 
