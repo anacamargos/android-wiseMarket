@@ -3,10 +3,16 @@ package com.example.anacamargos.wisemarket;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 
 /**
@@ -17,7 +23,14 @@ import android.view.ViewGroup;
  * Use the {@link ProductsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class ProductsFragment extends Fragment {
+
+
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    ArrayList<Produto> listaDeProdutos;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,6 +71,8 @@ public class ProductsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -89,6 +104,26 @@ public class ProductsFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerview);
+        listaDeProdutos = new ArrayList<Produto>();
+
+        Produto produto = new Produto ("Coca-Cola", 5.30);
+        Produto novoproduto = new Produto ( "Arroz", 10.70);
+        Produto novonovoProduto = new Produto ("Feijão", 15.50);
+        listaDeProdutos.add(produto);
+        listaDeProdutos.add(novoproduto);
+        listaDeProdutos.add(novonovoProduto);
+
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        final RecyclerViewAdapterProduct recyclerViewAdapter = new RecyclerViewAdapterProduct(getContext(), listaDeProdutos);
+        recyclerView.setAdapter(recyclerViewAdapter);
     }
 
     /**
