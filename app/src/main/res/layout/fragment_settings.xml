@@ -18,27 +18,17 @@
         android:background="#ffffff"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dados Cadastrais"
-            android:textColor="#000000"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:padding="8dp"
-            android:gravity="center"
-            />
 
         <EditText
             android:id="@+id/settings_nome"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
             android:layout_width="300dp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_style"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Nome" />
+            android:hint="Nome"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/settings_email"
@@ -129,7 +119,7 @@
             android:hint="Código de Segurança" />
 
         <Button
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="40dp"
             android:textColor="#ffffff"
             android:id="@+id/settings_button"
             android:background="@drawable/button_style"

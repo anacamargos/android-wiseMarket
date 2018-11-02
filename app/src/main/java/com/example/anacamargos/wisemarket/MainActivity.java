@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity
         ProductsFragment.OnFragmentInteractionListener {
 
     FragmentManager fm;
+    private String barra;
+    private Toolbar toolbar;
+
 
 
 
@@ -39,8 +42,11 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        barra = "Wise Market";
+        toolbar.setTitle(barra);
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +56,8 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });*/
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -88,6 +96,8 @@ public class MainActivity extends AppCompatActivity
 
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.frame_layout, new ProductsFragment());
+            barra = "Produtos";
+            toolbar.setTitle(barra);
             ft.commit();
         } else if (id == R.id.nav_historic) {
             // Mostrar historico de compras
@@ -98,6 +108,9 @@ public class MainActivity extends AppCompatActivity
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.frame_layout, new SettingsFragment());
             ft.commit();
+            barra = "Configurações";
+            toolbar.setTitle(barra);
+
 
         } else if (id == R.id.nav_logout) {
             // Fazer log out
