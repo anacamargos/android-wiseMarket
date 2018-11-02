@@ -9,9 +9,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -164,6 +167,23 @@ public class ProductsFragment extends Fragment {
                 return false;
             }
         });
+
+
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListenerProduct(this, recyclerView, new RecyclerItemClickListenerProduct.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Produto produtoClicado = listaDeProdutos.get(position);
+                Toast.makeText(getContext(), "Cliquei no produto " + produtoClicado.getNome(), Toast.LENGTH_SHORT ).show();
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        }));
+
+
+
     }
 
     /**
