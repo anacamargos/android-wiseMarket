@@ -64,7 +64,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     private OnFragmentInteractionListener mListener;
 
-    private FirebaseAuth mAuth;
+//    private FirebaseAuth mAuth;
 
 
     public SettingsFragment() {
@@ -97,7 +97,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        mAuth = FirebaseAuth.getInstance();
+//        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -115,34 +115,36 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         settingsCodigoSeguranca = (EditText) getView().findViewById(R.id.settings_codigoseguranca);
         settingsButton = (Button) getView().findViewById(R.id.settings_button);
 
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("users/" + currentUser.getUid());
+        settingsButton.setOnClickListener(SettingsFragment.this);
+
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("users/" + currentUser.getUid());
 
 
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                Usuario myUser = dataSnapshot.getValue(Usuario.class);
-                settingsNome.setText(myUser.getNome());
-                settingsEmail.setText(myUser.getEmail());
-                settingsTelefone.setText(myUser.getTelefone());
-                settingsCpf.setText(myUser.getCpf());
-                settingsCep.setText(myUser.getCep());
-                settingsSenha.setText(myUser.getSenha());
-                settingsNumCredito.setText(myUser.getNumCredito());
-                settingsDatExpira.setText(myUser.getDatExpira());
-                settingsCodigoSeguranca.setText(myUser.getCvv());
-
-                settingsButton.setOnClickListener(SettingsFragment.this);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                Usuario myUser = dataSnapshot.getValue(Usuario.class);
+//                settingsNome.setText(myUser.getNome());
+//                settingsEmail.setText(myUser.getEmail());
+//                settingsTelefone.setText(myUser.getTelefone());
+//                settingsCpf.setText(myUser.getCpf());
+//                settingsCep.setText(myUser.getCep());
+//                settingsSenha.setText(myUser.getSenha());
+//                settingsNumCredito.setText(myUser.getNumCredito());
+//                settingsDatExpira.setText(myUser.getDatExpira());
+//                settingsCodigoSeguranca.setText(myUser.getCvv());
+//
+//                settingsButton.setOnClickListener(SettingsFragment.this);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
     }
 
@@ -169,12 +171,13 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         }
 
         Usuario usuario = new Usuario(nome, cpf, cep, telefone, email, numCredito, datExpira, codigoSeguranca, senha);
-
-        final FirebaseUser currentUser = mAuth.getCurrentUser();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("users/" + currentUser.getUid());
-
-        myRef.setValue(usuario);
+        //COMENTEI AQUI
+//        final FirebaseUser currentUser = mAuth.getCurrentUser();
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("users/" + currentUser.getUid());
+//
+//        myRef.setValue(usuario);
+        //TERMINA AQUI
 
 //        AuthCredential credential = EmailAuthProvider
 //                .getCredential(currentUser.getEmail(), currentUser.get);

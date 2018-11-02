@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,7 +35,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private EditText signupDatExpira;
     private EditText signupCodigoSeguranca;
     private Button signupButton;
-    private FirebaseAuth mAuth;
+    private ProgressBar signupProgess;
+//    private FirebaseAuth mAuth;
 
 
     @Override
@@ -52,10 +54,12 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         signupDatExpira = (EditText) findViewById(R.id.signup_datexpira);
         signupCodigoSeguranca = (EditText) findViewById(R.id.signup_codigoseguranca);
         signupButton = (Button) findViewById(R.id.signup_button);
+        signupProgess = (ProgressBar) findViewById(R.id.signup_progress);
+        signupProgess.setVisibility(View.INVISIBLE);
 
         signupButton.setOnClickListener(this);
 
-        mAuth = FirebaseAuth.getInstance();
+//        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -83,35 +87,39 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         //if validations are ok
         final Usuario usuario = new Usuario(nome, cpf, cep, telefone, email, numCredito, datExpira, codigoSeguranca, senha);
 
-        mAuth.createUserWithEmailAndPassword(email, senha)
-                .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("FIREBASE", "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-
-                            FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            DatabaseReference myRef = database.getReference("users/");
-
-                            Map<String, Object> addedUser = new HashMap<>();
-                            addedUser.put(user.getUid(), usuario);
-                            myRef.updateChildren(addedUser);
-
-                            startActivity(new Intent(SignupActivity.this, MainActivity.class));
-
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w("FIREBASE", "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(SignupActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
-                        // ...
-                    }
-                });
         // TODO registrar usuario
+        signupProgess.setVisibility(View.VISIBLE);
+        signupButton.setVisibility(View.INVISIBLE);
+
+//        mAuth.createUserWithEmailAndPassword(email, senha)
+//                .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            // Sign in success, update UI with the signed-in user's information
+//                            Log.d("FIREBASE", "createUserWithEmail:success");
+//                            FirebaseUser user = mAuth.getCurrentUser();
+//
+//                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                            DatabaseReference myRef = database.getReference("users/");
+//
+//                            Map<String, Object> addedUser = new HashMap<>();
+//                            addedUser.put(user.getUid(), usuario);
+//                            myRef.updateChildren(addedUser);
+//
+//                            startActivity(new Intent(SignupActivity.this, MainActivity.class));
+//
+//                        } else {
+//                            // If sign in fails, display a message to the user.
+//                            Log.w("FIREBASE", "createUserWithEmail:failure", task.getException());
+//                            Toast.makeText(SignupActivity.this, "Authentication failed.",
+//                                    Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                        // ...
+//                    }
+//                });
+
 
     }
 }

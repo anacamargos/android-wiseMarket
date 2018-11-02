@@ -8,132 +8,235 @@
     android:orientation="vertical"
     android:background="#ffffff">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#ffffff">
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:padding="8dp"
             android:text="Dados Cadastrais"
             android:textColor="#000000"
             android:textSize="25dp"
             android:textStyle="bold"
-            android:padding="8dp"
-            android:gravity="center"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/signup_nome"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
             android:layout_width="300dp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_style"
             android:ems="10"
+            android:hint="Nome"
             android:inputType="textPersonName"
-            android:hint="Nome" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <EditText
             android:id="@+id/signup_email"
-            android:background="@drawable/edit_text_style"
-            android:layout_marginTop="10dp"
             android:layout_width="300dp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_style"
             android:ems="10"
+            android:hint="Email"
             android:inputType="textPersonName"
-            android:hint="Email" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_nome" />
 
         <EditText
             android:id="@+id/signup_telefone"
-            android:background="@drawable/edit_text_style"
-            android:layout_marginTop="10dp"
             android:layout_width="300dp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_style"
             android:ems="10"
+            android:hint="Telefone"
             android:inputType="textPersonName"
-            android:hint="Telefone" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_email" />
 
         <EditText
             android:id="@+id/signup_cpf"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
             android:layout_width="300dp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_style"
             android:ems="10"
+            android:hint="CPF"
             android:inputType="textPersonName"
-            android:hint="CPF" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_telefone" />
 
         <EditText
             android:id="@+id/signup_cep"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
             android:layout_width="300dp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_style"
             android:ems="10"
+            android:hint="CEP"
             android:inputType="textPersonName"
-            android:hint="CEP" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_cpf" />
 
         <EditText
             android:id="@+id/signup_password"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
             android:layout_width="300dp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_style"
             android:ems="10"
             android:hint="Senha"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_cep" />
 
         <EditText
             android:id="@+id/signup_numcredito"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
             android:layout_width="300dp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_style"
             android:ems="10"
+            android:hint="Número Cartão de Crédito"
             android:inputType="textPersonName"
-            android:hint="Número Cartão de Crédito" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_password" />
 
         <EditText
             android:id="@+id/signup_datexpira"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
             android:layout_width="300dp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_style"
             android:ems="10"
+            android:hint="Data de Validade"
+
             android:inputType="textPersonName"
-            android:hint="Data de Validade" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_numcredito" />
 
         <EditText
             android:id="@+id/signup_codigoseguranca"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
             android:layout_width="300dp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_style"
             android:ems="10"
+            android:hint="Código de Segurança"
             android:inputType="textPersonName"
-            android:hint="Código de Segurança" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.552"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_datexpira" />
+
+        <ProgressBar
+            android:id="@+id/signup_progress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/signup_button"
+            app:layout_constraintEnd_toEndOf="@+id/signup_button"
+            app:layout_constraintStart_toStartOf="@+id/signup_button"
+            app:layout_constraintTop_toTopOf="@+id/signup_button" />
 
         <Button
-            android:layout_marginTop="15dp"
-            android:textColor="#ffffff"
             android:id="@+id/signup_button"
-            android:background="@drawable/button_style"
             android:layout_width="130dp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:text="Sign up" />
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button_style"
+            android:text="Sign up"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_codigoseguranca" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
