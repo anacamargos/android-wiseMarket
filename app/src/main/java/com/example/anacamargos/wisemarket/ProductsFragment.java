@@ -11,7 +11,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -30,6 +32,7 @@ public class ProductsFragment extends Fragment {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     ArrayList<Produto> listaDeProdutos;
+    SearchView searchView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -113,17 +116,54 @@ public class ProductsFragment extends Fragment {
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerview);
         listaDeProdutos = new ArrayList<Produto>();
 
+        searchView = (SearchView) getView().findViewById(R.id.searchView);
+        searchView.setQueryHint("Digite o nome do produto desejado...");
+        searchView.setIconifiedByDefault(false);
+
         Produto produto = new Produto ("Coca-Cola", 5.30);
+        Produto produto2 = new Produto ("Cola", 7.50);
         Produto novoproduto = new Produto ( "Arroz", 10.70);
+        Produto novoproduto2 = new Produto ( "Ar", 16.70);
         Produto novonovoProduto = new Produto ("Feijão", 15.50);
         listaDeProdutos.add(produto);
         listaDeProdutos.add(novoproduto);
         listaDeProdutos.add(novonovoProduto);
+        listaDeProdutos.add(produto2);
+        listaDeProdutos.add(novoproduto2);
 
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         final RecyclerViewAdapterProduct recyclerViewAdapter = new RecyclerViewAdapterProduct(getContext(), listaDeProdutos);
         recyclerView.setAdapter(recyclerViewAdapter);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //Toast.makeText(getBaseContext(), newText, Toast.LENGTH_LONG).show();
+
+                ArrayList<Produto> listaDeProdutosSelecionada = new ArrayList<Produto>();
+
+                for (int i = 0; i < listaDeProdutos.size(); i ++) {
+                    Produto atual = listaDeProdutos.get(i);
+                    if (atual.getNome().startsWith(newText)) {
+                        listaDeProdutosSelecionada.add(atual);
+                    }
+                }
+
+                layoutManager = new LinearLayoutManager(getContext());
+                recyclerView.setLayoutManager(layoutManager);
+                final RecyclerViewAdapterProduct recyclerViewAdapter = new RecyclerViewAdapterProduct(getContext(), listaDeProdutosSelecionada);
+                recyclerView.setAdapter(recyclerViewAdapter);
+
+                return false;
+            }
+        });
     }
 
     /**
