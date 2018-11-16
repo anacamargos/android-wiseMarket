@@ -20,7 +20,8 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, SettingsFragment.OnFragmentInteractionListener,
-        ProductsFragment.OnFragmentInteractionListener, YourListsFragment.OnFragmentInteractionListener {
+        ProductsFragment.OnFragmentInteractionListener, YourListsFragment.OnFragmentInteractionListener,
+        ListDetailsFragment.OnFragmentInteractionListener{
 
     FragmentManager fm;
     private String barra;

@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -151,6 +153,38 @@ public class YourListsFragment extends Fragment {
                 });
             }
         });
+
+
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListenerListaDeCompras(this, recyclerView, new RecyclerItemClickListenerListaDeCompras.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                ListaDeCompras novaLista = listaDeCompras.get(position);
+                Toast.makeText(getContext(), "Cliquei na lista " + novaLista.getNomeLista(), Toast.LENGTH_SHORT ).show();
+
+
+                //Fragment fragment = new tasks();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame_layout, new ListDetailsFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+
+                /*FragmentManager fm;
+                fm = getFragmentManager();
+
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.frame_layout, new ListDetailsFragment());
+                //barra = "Listas de Compras";
+                //toolbar.setTitle(barra);
+                ft.commit(); */
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        }));
 
 
 
