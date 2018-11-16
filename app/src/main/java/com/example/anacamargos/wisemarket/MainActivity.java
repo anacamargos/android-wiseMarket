@@ -20,7 +20,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, SettingsFragment.OnFragmentInteractionListener,
-        ProductsFragment.OnFragmentInteractionListener {
+        ProductsFragment.OnFragmentInteractionListener, YourListsFragment.OnFragmentInteractionListener {
 
     FragmentManager fm;
     private String barra;
@@ -90,6 +90,11 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_lists) {
             // Mostrar lista de compras
             // TODO fazer tela lista de compras
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.frame_layout, new YourListsFragment());
+            barra = "Listas de Compras";
+            toolbar.setTitle(barra);
+            ft.commit();
         } else if (id == R.id.nav_products) {
             // Mostrar lista de produtos
 
