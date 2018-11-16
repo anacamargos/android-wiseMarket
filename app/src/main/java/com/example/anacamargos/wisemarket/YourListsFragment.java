@@ -8,11 +8,15 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -93,15 +97,6 @@ public class YourListsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        FloatingActionButton fab = (FloatingActionButton) getView().findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerview_list);
         listaDeCompras = new ArrayList<ListaDeCompras>();
@@ -115,6 +110,50 @@ public class YourListsFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         final RecyclerViewAdapterListaDeCompras recyclerViewAdapter = new RecyclerViewAdapterListaDeCompras(getContext(), listaDeCompras);
         recyclerView.setAdapter(recyclerViewAdapter);
+
+        FloatingActionButton fab = (FloatingActionButton) getView().findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        //.setAction("Action", null).show();
+
+
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(view.getContext());
+                LayoutInflater inflater = getLayoutInflater();
+
+                View view1 = inflater.inflate(R.layout.dialog_new_list, null);
+                mBuilder.setView(view1);
+
+                final EditText nomeLista = (EditText) view1.findViewById(R.id.nomeLista_dialog);
+
+                Button btn = (Button) view1.findViewById(R.id.btn);
+
+                final AlertDialog dialog = mBuilder.create();
+                dialog.show();
+
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (!nomeLista.getText().toString().isEmpty() ) {
+                            ListaDeCompras novaLista = new ListaDeCompras (nomeLista.getText().toString());
+                            listaDeCompras.add(novaLista);
+                            dialog.dismiss();
+                            Toast.makeText(getContext(), "Inserido com sucesso!", Toast.LENGTH_SHORT).show();
+                            recyclerViewAdapter.notifyDataSetChanged();
+                        } else {
+                            Toast.makeText(view.getContext(), "Favor preencher todos os campos", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
+
+
 
     }
 
