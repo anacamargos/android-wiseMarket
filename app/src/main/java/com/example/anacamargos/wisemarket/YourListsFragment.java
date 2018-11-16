@@ -8,9 +8,13 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 
 /**
@@ -22,6 +26,13 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class YourListsFragment extends Fragment {
+
+
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    ArrayList<ListaDeCompras> listaDeCompras;
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -90,6 +101,21 @@ public class YourListsFragment extends Fragment {
                         .setAction("Action", null).show();
             }
         });
+
+
+        recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerview_list);
+        listaDeCompras = new ArrayList<ListaDeCompras>();
+
+        ListaDeCompras lista1 = new ListaDeCompras("Churrasco");
+        ListaDeCompras lista2 = new ListaDeCompras("Supermercado da semana");
+        listaDeCompras.add(lista1);
+        listaDeCompras.add(lista2);
+
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        final RecyclerViewAdapterListaDeCompras recyclerViewAdapter = new RecyclerViewAdapterListaDeCompras(getContext(), listaDeCompras);
+        recyclerView.setAdapter(recyclerViewAdapter);
+
     }
 
     @Override
