@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,12 +40,10 @@ public class YourListsFragment extends Fragment {
     ArrayList<ListaDeCompras> listaDeCompras;
 
 
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -62,7 +61,6 @@ public class YourListsFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment YourListsFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static YourListsFragment newInstance(String param1, String param2) {
         YourListsFragment fragment = new YourListsFragment();
         Bundle args = new Bundle();
@@ -88,7 +86,6 @@ public class YourListsFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_your_lists, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -99,6 +96,7 @@ public class YourListsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Listas de Compras");
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerview_list);
         listaDeCompras = new ArrayList<ListaDeCompras>();
@@ -137,6 +135,9 @@ public class YourListsFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         if (!nomeLista.getText().toString().isEmpty() ) {
+
+                            //TODO adicionar nova lista no banco de dados
+
                             ListaDeCompras novaLista = new ListaDeCompras (nomeLista.getText().toString());
                             listaDeCompras.add(novaLista);
                             dialog.dismiss();
@@ -159,21 +160,26 @@ public class YourListsFragment extends Fragment {
 
 
                 //Fragment fragment = new tasks();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+
+                /*FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frame_layout, new ListDetailsFragment());
                 fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                fragmentTransaction.commit();*/
+
+                Fragment myFrag = new ListDetailsFragment();
+
+                Bundle bundle = new Bundle();
+
+                //TODO recuperar ID da lista
+                bundle.putString("idLista", String.valueOf(novaLista.getId()));
+                bundle.putString("nomeLista", novaLista.getNomeLista());
+                myFrag.setArguments(bundle);
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.frame_layout, myFrag).commit();
 
 
-                /*FragmentManager fm;
-                fm = getFragmentManager();
-
-                FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.frame_layout, new ListDetailsFragment());
-                //barra = "Listas de Compras";
-                //toolbar.setTitle(barra);
-                ft.commit(); */
             }
 
             @Override

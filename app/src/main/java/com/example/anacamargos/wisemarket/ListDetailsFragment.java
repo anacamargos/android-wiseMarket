@@ -3,10 +3,21 @@ package com.example.anacamargos.wisemarket;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 
 /**
@@ -18,12 +29,20 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ListDetailsFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
+
+
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    ArrayList<Produto> listaDeProdutos;
+
+    int idLista;
+    String nomeLista;
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
@@ -41,7 +60,8 @@ public class ListDetailsFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment ListDetailsFragment.
      */
-    // TODO: Rename and change types and number of parameters
+
+
     public static ListDetailsFragment newInstance(String param1, String param2) {
         ListDetailsFragment fragment = new ListDetailsFragment();
         Bundle args = new Bundle();
@@ -67,7 +87,72 @@ public class ListDetailsFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_list_details, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+        nomeLista = "";
+
+        Bundle mBundle = new Bundle();
+        if(mBundle != null){
+            mBundle = getArguments();
+            idLista = Integer.parseInt(mBundle.getString("idLista"));
+            nomeLista = mBundle.getString("nomeLista");
+        }
+
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Produtos da Lista " + nomeLista);
+
+
+        recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerview_listDetail);
+        TextView totalCompra = (TextView) getView().findViewById(R.id.totalCompra);
+        Button btn = (Button) getView().findViewById(R.id.btn);
+
+
+        //TODO recuperar produtos que pertencem a essa lista e substituir por esse array
+        listaDeProdutos = new ArrayList<Produto>();
+
+        Produto produto = new Produto ("Coca-Cola", 5.30);
+        Produto produto2 = new Produto ("Picanha 1kg", 45.90);
+        listaDeProdutos.add(produto);
+        listaDeProdutos.add(produto2);
+
+        DecimalFormat df = new DecimalFormat("###,##0.00");
+
+        final double valorDaCompra = recuperaTotalDaCompra(listaDeProdutos);
+        totalCompra.setText("Total: R$" + df.format(valorDaCompra));
+
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        final RecyclerViewAdapterProduct recyclerViewAdapter = new RecyclerViewAdapterProduct(getContext(), listaDeProdutos);
+        recyclerView.setAdapter(recyclerViewAdapter);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Date data = new Date();
+                SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+                formatador.format( data );
+
+                Pedido novo = new Pedido(valorDaCompra, nomeLista, data );
+                //TODO criar pedido no banco de dados
+            }
+        });
+    }
+
+    public double recuperaTotalDaCompra ( ArrayList<Produto> listaDeProdutos) {
+
+        double totalDaCompra = 0;
+
+        for (int i = 0; i < listaDeProdutos.size(); i ++) {
+            Produto produto = listaDeProdutos.get(i);
+            totalDaCompra += produto.getValor();
+        }
+        return totalDaCompra;
+    }
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -102,7 +187,7 @@ public class ListDetailsFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+
         void onFragmentInteraction(Uri uri);
     }
 }

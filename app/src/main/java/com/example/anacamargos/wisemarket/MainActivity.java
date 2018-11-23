@@ -89,28 +89,31 @@ public class MainActivity extends AppCompatActivity
         fm = getSupportFragmentManager();
 
         if (id == R.id.nav_lists) {
+
             // Mostrar lista de compras
-            // TODO fazer tela lista de compras
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.frame_layout, new YourListsFragment());
             barra = "Listas de Compras";
             toolbar.setTitle(barra);
             ft.commit();
+
         } else if (id == R.id.nav_products) {
+
             // Mostrar lista de produtos
-
-
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.frame_layout, new ProductsFragment());
             barra = "Produtos";
             toolbar.setTitle(barra);
             ft.commit();
+
         } else if (id == R.id.nav_historic) {
+
             // Mostrar historico de compras
             // TODO fazer tela historico de compras
-        } else if (id == R.id.nav_settings) {
-            // Mostrar tela configurações
 
+        } else if (id == R.id.nav_settings) {
+
+            // Mostrar tela configurações
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.frame_layout, new SettingsFragment());
             ft.commit();
