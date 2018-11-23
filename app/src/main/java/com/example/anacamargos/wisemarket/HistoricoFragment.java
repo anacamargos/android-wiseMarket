@@ -1,6 +1,7 @@
 package com.example.anacamargos.wisemarket;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 
 /**
@@ -123,6 +125,13 @@ public class HistoricoFragment extends Fragment {
                     return;
                 }
 
+                ArrayList<Pedido> novaLista = retornaListasCompativeis(listaDePedidos, dataInicio, dataFim);
+
+                layoutManager = new LinearLayoutManager(getContext());
+                recyclerView.setLayoutManager(layoutManager);
+                final RecyclerViewAdapterPedido recyclerViewAdapter = new RecyclerViewAdapterPedido(getContext(), novaLista);
+                recyclerView.setAdapter(recyclerViewAdapter);
+
 
                 recyclerView.setVisibility(View.VISIBLE);
             }
@@ -132,19 +141,103 @@ public class HistoricoFragment extends Fragment {
 
     }
 
+    public ArrayList<Pedido> retornaListasCompativeis(ArrayList<Pedido> listaDePedidos, String dataInicio, String dataFim) {
+
+        ArrayList<Pedido> retorno = new ArrayList<Pedido>();
+
+        Calendar inicio = retornaCalendar(dataInicio);
+        Calendar fim = retornaCalendar(dataFim);
+
+        for (int i = 0; i < listaDePedidos.size(); i ++) {
+
+            Pedido pedidoAtual = listaDePedidos.get(i);
+
+            Calendar dataDoPedido = pedidoAtual.getDataPedido();
+
+            if ( ( dataDoPedido.after(inicio) && dataDoPedido.before(fim) )  || dataDoPedido.equals(inicio) ||
+                    dataDoPedido.equals(fim)) {
+                retorno.add(pedidoAtual);
+            }
+        }
+
+        return retorno;
+
+    }
+
     public boolean datasNaoValidas (String dataInicio, String dataFim) {
         //retorna true se datas forem invalidas
 
-        try {
+        boolean retorno = true;
 
-            String [] vetorDataInicio = dataInicio.split("/");
-            String [] vetorDataFim = dataFim.split("/");
-
-            return false;
-
-        } catch (Exception e) {
-            return true;
+        if (dataInicio.contains("/") && dataFim.contains("/") && seForMenor (dataInicio, dataFim)) {
+            //return false;
+            retorno = false;
+        } else {
+            //return true;
+            retorno = true;
         }
+        return retorno;
+
+    }
+
+
+    public Calendar retornaCalendar (String data) {
+        String [] vetor = data.split("/");
+
+        int dia = Integer.parseInt(vetor[0]);
+        int mes = Integer.parseInt(vetor[1]);
+        int ano = Integer.parseInt(vetor[2]);
+
+
+        int mesReal = retornaMesReal(mes);
+
+        Calendar completo = new GregorianCalendar(ano, mesReal, dia);
+        return completo;
+    }
+
+    public boolean seForMenor (String dataInicio, String dataFim) {
+
+        boolean retorno = false;
+
+        Calendar inicio = retornaCalendar(dataInicio);
+        Calendar fim = retornaCalendar(dataFim);
+
+        if ( inicio.before(fim)) {
+            retorno = true;
+        }
+        return retorno;
+
+    }
+
+    public int retornaMesReal (int mes) {
+        int mesReal = mes - 1;
+        return mesReal;
+//        int mesReal = 0;
+//        if(mes == 1) {
+//            mesReal = 0;
+//        } else if(mes == 2) {
+//
+//        } else if(mes == 3) {
+//
+//        } else if(mes == 4) {
+//
+//        } else if(mes == 5) {
+//
+//        } else if(mes == 6) {
+//
+//        } else if(mes == 7) {
+//
+//        } else if(mes == 8) {
+//
+//        } else if(mes == 9) {
+//
+//        } else if(mes == 10) {
+//
+//        } else if(mes == 11) {
+//
+//        } else if(mes == 12) {
+//
+//        }
 
     }
 
