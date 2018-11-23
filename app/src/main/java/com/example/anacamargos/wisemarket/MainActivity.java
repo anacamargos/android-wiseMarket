@@ -21,7 +21,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, SettingsFragment.OnFragmentInteractionListener,
         ProductsFragment.OnFragmentInteractionListener, YourListsFragment.OnFragmentInteractionListener,
-        ListDetailsFragment.OnFragmentInteractionListener{
+        ListDetailsFragment.OnFragmentInteractionListener, HistoricoFragment.OnFragmentInteractionListener{
 
     FragmentManager fm;
     private String barra;
@@ -109,7 +109,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_historic) {
 
             // Mostrar historico de compras
-            // TODO fazer tela historico de compras
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.frame_layout, new HistoricoFragment());
+            barra = "Histórico de Compras";
+            toolbar.setTitle(barra);
+            ft.commit();
 
         } else if (id == R.id.nav_settings) {
 

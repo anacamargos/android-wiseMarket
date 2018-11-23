@@ -1,17 +1,18 @@
 package com.example.anacamargos.wisemarket;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Pedido {
     private int id;
     private double valorPedido;
     private String nomePedido;
-    private Date dataPedido;
+    private Calendar dataPedido;
 
 
     public Pedido () {}
 
-    public Pedido (double valorPedido, String nomePedido, Date dataPedido) {
+    public Pedido (double valorPedido, String nomePedido, Calendar dataPedido) {
         this.valorPedido = valorPedido;
         this.nomePedido = nomePedido;
         this.dataPedido = dataPedido;
@@ -25,7 +26,7 @@ public class Pedido {
         return id;
     }
 
-    public Date getDataPedido() {
+    public Calendar getDataPedido() {
         return dataPedido;
     }
 
@@ -37,7 +38,7 @@ public class Pedido {
         return nomePedido;
     }
 
-    public void setDataPedido(Date dataPedido) {
+    public void setDataPedido(Calendar dataPedido) {
         this.dataPedido = dataPedido;
     }
 

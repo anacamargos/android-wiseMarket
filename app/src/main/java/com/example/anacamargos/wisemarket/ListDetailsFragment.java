@@ -19,6 +19,7 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -134,11 +135,11 @@ public class ListDetailsFragment extends Fragment {
             public void onClick(View v) {
 
 
-                Date data = new Date();
-                SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-                formatador.format( data );
 
-                Pedido novo = new Pedido(valorDaCompra, nomeLista, data );
+
+
+
+
 
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(getView().getContext());
                 LayoutInflater inflater = getLayoutInflater();
@@ -158,6 +159,9 @@ public class ListDetailsFragment extends Fragment {
                         dialog.dismiss();
                         Toast.makeText(getContext(),"Pedido efetuado com sucesso", Toast.LENGTH_LONG).show();
 
+                        Calendar calendar = Calendar.getInstance();
+
+                        Pedido novo = new Pedido(valorDaCompra, nomeLista, calendar );
                         //TODO criar pedido no banco de dados
                     }
                 });
