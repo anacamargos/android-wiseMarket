@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +14,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Array;
@@ -36,13 +41,14 @@ public class ProductsFragment extends Fragment {
     RecyclerView.LayoutManager layoutManager;
     ArrayList<Produto> listaDeProdutos;
     SearchView searchView;
+    String listaEscolhida;
 
-    // TODO: Rename parameter arguments, choose names that match
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
@@ -60,7 +66,7 @@ public class ProductsFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment ProductsFragment.
      */
-    // TODO: Rename and change types and number of parameters
+
     public static ProductsFragment newInstance(String param1, String param2) {
         ProductsFragment fragment = new ProductsFragment();
         Bundle args = new Bundle();
@@ -88,7 +94,7 @@ public class ProductsFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_products, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -115,6 +121,8 @@ public class ProductsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        listaEscolhida = "oi";
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerview);
         listaDeProdutos = new ArrayList<Produto>();
@@ -169,11 +177,69 @@ public class ProductsFragment extends Fragment {
         });
 
 
+
+
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListenerProduct(this, recyclerView, new RecyclerItemClickListenerProduct.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Produto produtoClicado = listaDeProdutos.get(position);
-                Toast.makeText(getContext(), "Cliquei no produto " + produtoClicado.getNome(), Toast.LENGTH_SHORT ).show();
+                final Produto produtoClicado = listaDeProdutos.get(position);
+                //Toast.makeText(getContext(), "Cliquei no produto " + produtoClicado.getNome(), Toast.LENGTH_SHORT ).show();
+
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(view.getContext());
+                LayoutInflater inflater = getLayoutInflater();
+
+
+                View view1 = inflater.inflate(R.layout.dialog_choose_list, null);
+                mBuilder.setView(view1);
+
+                final AlertDialog dialog = mBuilder.create();
+
+
+                Button btn = (Button) view1.findViewById(R.id.btn_dialog);
+                TextView txt = (TextView) view1.findViewById(R.id.textView_dialog);
+                txt.setText("Escolha uma das listas para adicionar o produto " + produtoClicado.getNome());
+                NumberPicker picker = (NumberPicker) view1.findViewById(R.id.numberPicker);
+
+
+
+                //TODO Retornar listas de compras existentes do banco e criar ArrayList
+                //TODO Substituir o vetor genders pelos nomes das listas existentes
+                final String genders[] = { "unassessed", "Skipped", "Incorrect", "Correct", "1 mark" };
+
+                picker.setMinValue(0);
+                picker.setMaxValue(genders.length - 1);
+                picker.setDisplayedValues(genders);
+                picker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+
+
+                NumberPicker.OnValueChangeListener myValChangedListener = new NumberPicker.OnValueChangeListener() {
+                    @Override
+                    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                        Toast.makeText(getContext(), "Lista escolhida: " + genders[newVal] , Toast.LENGTH_SHORT ).show();
+                        listaEscolhida = genders[newVal];
+                    }
+                };
+                picker.setOnValueChangedListener(myValChangedListener);
+
+
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        //TODO adicionar produto à lista de compras escolhida
+                        //Toast.makeText(getContext(), "Lista escolhida: " + listaEscolhida , Toast.LENGTH_LONG ).show();
+                        dialog.dismiss();
+
+                        Toast.makeText(getContext(), "Produto " + produtoClicado.getNome() + " foi adicionado a lista " +  listaEscolhida + " com sucesso" , Toast.LENGTH_LONG ).show();
+
+
+                    }
+                });
+
+
+
+                dialog.show();
+
             }
 
             @Override
@@ -197,7 +263,7 @@ public class ProductsFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+
         void onFragmentInteraction(Uri uri);
     }
 }
