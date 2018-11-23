@@ -87,7 +87,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         //if validations are ok
         final Usuario usuario = new Usuario(nome, cpf, cep, telefone, email, numCredito, datExpira, codigoSeguranca, senha);
 
-        // TODO registrar usuario
+        // TODO registrar usuario no banco
         signupProgess.setVisibility(View.VISIBLE);
         signupButton.setVisibility(View.INVISIBLE);
 

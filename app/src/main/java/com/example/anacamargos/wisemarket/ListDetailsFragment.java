@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -137,7 +139,40 @@ public class ListDetailsFragment extends Fragment {
                 formatador.format( data );
 
                 Pedido novo = new Pedido(valorDaCompra, nomeLista, data );
-                //TODO criar pedido no banco de dados
+
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getView().getContext());
+                LayoutInflater inflater = getLayoutInflater();
+
+                View view1 = inflater.inflate(R.layout.dialog_confirma_pedido, null);
+                mBuilder.setView(view1);
+
+                Button btnSim = (Button) view1.findViewById(R.id.btnSim);
+                Button btnNao = (Button) view1.findViewById(R.id.btnNao);
+
+                final AlertDialog dialog = mBuilder.create();
+                dialog.show();
+
+                btnSim.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        Toast.makeText(getContext(),"Pedido efetuado com sucesso", Toast.LENGTH_LONG).show();
+
+                        //TODO criar pedido no banco de dados
+                    }
+                });
+
+                btnNao.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        Toast.makeText(getContext(),"Pedido cancelado com sucesso", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
+
+
             }
         });
     }

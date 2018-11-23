@@ -82,6 +82,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginProgess.setVisibility(View.VISIBLE);
         loginButton.setVisibility(View.INVISIBLE);
 
+        // if validations are ok
+        // TODO fazer login
+
 
 //        mAuth.signInWithEmailAndPassword(email, password)
 //                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -103,7 +106,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //                });
 
 
-        // if validations are ok
-        // TODO fazer login
+
     }
 }

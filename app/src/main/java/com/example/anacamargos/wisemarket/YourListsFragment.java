@@ -99,6 +99,8 @@ public class YourListsFragment extends Fragment {
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Listas de Compras");
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerview_list);
+
+        //TODO recuperar listas de compras existentes no banco e trocar por esse array list
         listaDeCompras = new ArrayList<ListaDeCompras>();
 
         ListaDeCompras lista1 = new ListaDeCompras("Churrasco");

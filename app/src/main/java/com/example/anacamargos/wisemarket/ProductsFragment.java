@@ -125,6 +125,8 @@ public class ProductsFragment extends Fragment {
         listaEscolhida = "oi";
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerview);
+
+        //TODO recuperar produtos existentes no banco e trocar por esse array list
         listaDeProdutos = new ArrayList<Produto>();
 
         searchView = (SearchView) getView().findViewById(R.id.searchView);

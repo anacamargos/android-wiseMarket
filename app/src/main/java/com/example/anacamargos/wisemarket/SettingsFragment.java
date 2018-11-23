@@ -53,12 +53,11 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     private Button settingsButton;
 
 
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
@@ -79,7 +78,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
      * @param param2 Parameter 2.
      * @return A new instance of fragment SettingsFragment.
      */
-    // TODO: Rename and change types and number of parameters
+
     public static SettingsFragment newInstance(String param1, String param2) {
         SettingsFragment fragment = new SettingsFragment();
         Bundle args = new Bundle();
@@ -116,6 +115,8 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         settingsButton = (Button) getView().findViewById(R.id.settings_button);
 
         settingsButton.setOnClickListener(SettingsFragment.this);
+
+        //TODO recuperar dados do usuario e exibir na tela
 
 //        FirebaseUser currentUser = mAuth.getCurrentUser();
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -171,6 +172,11 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         }
 
         Usuario usuario = new Usuario(nome, cpf, cep, telefone, email, numCredito, datExpira, codigoSeguranca, senha);
+
+        //if validations are ok
+        // TODO alterar dados do Usuario no banco
+
+
         //COMENTEI AQUI
 //        final FirebaseUser currentUser = mAuth.getCurrentUser();
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -207,8 +213,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
 //        currentUser.updatePassword(senha);
 //        currentUser.updateEmail(email);
-        //if validations are ok
-        // TODO alterar dados do Usuario
+
 
 
     }
@@ -220,7 +225,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -255,7 +260,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+
         void onFragmentInteraction(Uri uri);
     }
 }
