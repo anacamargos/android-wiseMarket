@@ -23,6 +23,5 @@ O projeto em questão se trata de um sistema de compras de supermercado. O objet
 * Ana Letícia Camargos :octocat: [@anacamargos](https://github.com/anacamargos)
 * Guilherme Lana :octocat: [@guilhermelana222](https://github.com/GuilhermeLana222)
 * Otto Bittencourt :octocat: [@ottowbitt](https://github.com/OttoWBitt)
-* Rafael Câmara :octocat: [@rafaelcamaram](https://github.com/rafaelcamaram)
 
 
