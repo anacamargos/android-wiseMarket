@@ -134,10 +134,10 @@ public class ProductsFragment extends Fragment {
         searchView.setIconifiedByDefault(false);
 
         Produto produto = new Produto ("Coca-Cola", 5.30);
-        Produto produto2 = new Produto ("Cola", 7.50);
+        Produto produto2 = new Produto ("Feijão", 7.50);
         Produto novoproduto = new Produto ( "Arroz", 10.70);
-        Produto novoproduto2 = new Produto ( "Ar", 16.70);
-        Produto novonovoProduto = new Produto ("Feijão", 15.50);
+        Produto novoproduto2 = new Produto ( "Picanha 1kg", 50.45);
+        Produto novonovoProduto = new Produto ("Açucar", 5.90);
         listaDeProdutos.add(produto);
         listaDeProdutos.add(novoproduto);
         listaDeProdutos.add(novonovoProduto);
@@ -206,7 +206,7 @@ public class ProductsFragment extends Fragment {
 
                 //TODO Retornar listas de compras existentes do banco e criar ArrayList
                 //TODO Substituir o vetor genders pelos nomes das listas existentes
-                final String genders[] = { "unassessed", "Skipped", "Incorrect", "Correct", "1 mark" };
+                final String genders[] = { "Churrasco", "Supermercado da Semana", "Almoco" };
 
                 picker.setMinValue(0);
                 picker.setMaxValue(genders.length - 1);

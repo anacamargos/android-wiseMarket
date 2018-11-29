@@ -116,6 +116,17 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
         settingsButton.setOnClickListener(SettingsFragment.this);
 
+
+        settingsNome.setText("Ana");
+        settingsEmail.setText("ana@gmail.com");
+        settingsTelefone.setText("996019723");
+        settingsCpf.setText("02093645629");
+        settingsCep.setText("31340670");
+        settingsSenha.setText("123456");
+        settingsNumCredito.setText("7689 4860 5362 5907");
+        settingsDatExpira.setText("07/20");
+        settingsCodigoSeguranca.setText("216");
+
         //TODO recuperar dados do usuario e exibir na tela
 
 //        FirebaseUser currentUser = mAuth.getCurrentUser();

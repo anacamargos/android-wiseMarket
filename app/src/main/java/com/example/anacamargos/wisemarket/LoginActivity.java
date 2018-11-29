@@ -85,6 +85,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         // if validations are ok
         // TODO fazer login
 
+        startActivity(new Intent(this, MainActivity.class));
+
 
 //        mAuth.signInWithEmailAndPassword(email, password)
 //                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

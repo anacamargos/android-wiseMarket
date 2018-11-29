@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
             // Fazer log out
             // TODO fazer logout
+            startActivity(new Intent(this, LoginActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

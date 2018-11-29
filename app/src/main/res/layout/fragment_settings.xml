@@ -18,105 +18,275 @@
         android:background="#ffffff"
         android:orientation="vertical">
 
-
-        <EditText
-            android:id="@+id/settings_nome"
-            android:layout_width="300dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/edit_text_style"
-            android:ems="10"
-            android:hint="Nome"
-            android:inputType="textPersonName" />
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
 
-        <EditText
-            android:id="@+id/settings_email"
-            android:background="@drawable/edit_text_style"
-            android:layout_marginTop="10dp"
-            android:layout_width="300dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Email" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome:"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginLeft="10dp"/>
 
-        <EditText
-            android:id="@+id/settings_telefone"
-            android:background="@drawable/edit_text_style"
-            android:layout_marginTop="10dp"
-            android:layout_width="300dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Telefone" />
+            <EditText
+                android:id="@+id/settings_nome"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edit_text_style"
+                android:ems="10"
+                android:hint="Nome"
+                android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/settings_cpf"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
-            android:layout_width="300dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="CPF" />
 
-        <EditText
-            android:id="@+id/settings_cep"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
-            android:layout_width="300dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="CEP" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/settings_password"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
-            android:layout_width="300dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Senha"
-            android:inputType="textPassword" />
 
-        <EditText
-            android:id="@+id/settings_numcredito"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
-            android:layout_width="300dp"
-            android:layout_gravity="center"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Número Cartão de Crédito" />
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
 
-        <EditText
-            android:id="@+id/settings_datexpira"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
-            android:layout_width="300dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Data de Validade" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email:"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginLeft="10dp"/>
 
-        <EditText
-            android:id="@+id/settings_codigoseguranca"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_style"
-            android:layout_width="300dp"
-            android:layout_gravity="center"
+            <EditText
+                android:id="@+id/settings_email"
+                android:background="@drawable/edit_text_style"
+                android:layout_width="250dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Email" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Código de Segurança" />
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tel:    "
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginLeft="10dp"/>
+
+
+
+            <EditText
+                android:id="@+id/settings_telefone"
+                android:background="@drawable/edit_text_style"
+                android:layout_marginLeft="10dp"
+                android:layout_width="250dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Telefone" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CPF:  "
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginLeft="10dp"/>
+
+
+            <EditText
+                android:id="@+id/settings_cpf"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edit_text_style"
+                android:layout_width="250dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="CPF" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CEP:  "
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginLeft="10dp"/>
+
+
+            <EditText
+                android:id="@+id/settings_cep"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edit_text_style"
+                android:layout_width="250dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="CEP" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Senha:"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginLeft="10dp"/>
+
+
+            <EditText
+                android:id="@+id/settings_password"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edit_text_style"
+                android:layout_width="250dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Senha"
+                android:inputType="textPassword" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Num cartão:"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginLeft="10dp"/>
+
+
+            <EditText
+                android:id="@+id/settings_numcredito"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edit_text_style"
+                android:layout_width="250dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Número Cartão de Crédito" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dat exp:       "
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginLeft="10dp"/>
+
+
+            <EditText
+                android:id="@+id/settings_datexpira"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edit_text_style"
+                android:layout_width="250dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Data de Validade" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cod seg:      "
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginLeft="10dp"/>
+
+
+            <EditText
+                android:id="@+id/settings_codigoseguranca"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edit_text_style"
+                android:layout_width="250dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Código de Segurança" />
+
+
+        </LinearLayout>
+
+
 
         <Button
             android:layout_marginTop="40dp"
@@ -126,7 +296,8 @@
             android:layout_width="130dp"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:text="Alterar" />
+            android:text="Alterar"
+            android:layout_marginBottom="50dp"/>
 
     </LinearLayout>
 </ScrollView>

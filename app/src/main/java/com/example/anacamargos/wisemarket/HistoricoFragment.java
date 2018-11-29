@@ -94,14 +94,14 @@ public class HistoricoFragment extends Fragment {
 
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, 2018);
-        c.set(Calendar.MONTH, Calendar.MARCH);
-        c.set(Calendar.DAY_OF_MONTH, 1 );
+        c.set(Calendar.MONTH, Calendar.NOVEMBER);
+        c.set(Calendar.DAY_OF_MONTH, 27 );
         Pedido pedido = new Pedido(123.45, "Festa de Aniversário", c);
 
         Calendar c1 = Calendar.getInstance();
         c1.set(Calendar.YEAR, 2018);
-        c1.set(Calendar.MONTH, Calendar.MARCH);
-        c1.set(Calendar.DAY_OF_MONTH, 28 );
+        c1.set(Calendar.MONTH, Calendar.NOVEMBER);
+        c1.set(Calendar.DAY_OF_MONTH, 26 );
         Pedido pedido2 = new Pedido(45.80, "Churrasco ", c1);
 
         listaDePedidos.add(pedido);

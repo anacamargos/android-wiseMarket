@@ -105,8 +105,10 @@ public class YourListsFragment extends Fragment {
 
         ListaDeCompras lista1 = new ListaDeCompras("Churrasco");
         ListaDeCompras lista2 = new ListaDeCompras("Supermercado da semana");
+        ListaDeCompras lista3 = new ListaDeCompras("Almoco");
         listaDeCompras.add(lista1);
         listaDeCompras.add(lista2);
+        listaDeCompras.add(lista3);
 
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);

@@ -115,8 +115,8 @@ public class ListDetailsFragment extends Fragment {
         //TODO recuperar produtos que pertencem a essa lista e substituir por esse array
         listaDeProdutos = new ArrayList<Produto>();
 
-        Produto produto = new Produto ("Coca-Cola", 5.30);
-        Produto produto2 = new Produto ("Picanha 1kg", 45.90);
+        Produto produto = new Produto ("Arroz", 10.70);
+        Produto produto2 = new Produto ("Feijão", 7.50);
         listaDeProdutos.add(produto);
         listaDeProdutos.add(produto2);
 
