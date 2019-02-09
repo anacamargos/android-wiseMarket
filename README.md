@@ -1,6 +1,6 @@
 # Wise Market
 
-Aplicativo desenvolvido para a disciplina LPS
+Aplicativo desenvolvido para a disciplina LPS (Laboratório de Projeto de Sistemas).
 
 ### Objetivo
 
